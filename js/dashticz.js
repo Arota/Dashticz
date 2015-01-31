@@ -94,6 +94,7 @@ function getDevices(){
 					if(data.result[r]['SwitchType']=='Dimmer'){
 						
 						current = data.result[r]['Level']+'%';
+						current = data.result[r]['Level'];
 					}
 					
 					if(
@@ -184,6 +185,7 @@ function getDevices(){
 											html+='<div class="col-xs-8">';
 												if(data.result[r]['SwitchType']=='Dimmer'){
 													html+='<div>'+data.result[r]['Name']+' ('+current+')</div>';
+													html+='<div>'+data.result[r]['Name']+' (<span id="current'+data.result[r]['idx']+'">'+current+'</span>%)</div>';
 													html+='<div>';
 													html+='<input type="text" class="span2" value="'+data.result[r]['Level']+'" id="sl'+data.result[r]['idx']+'" >';
 													html+='</div>'
@@ -280,6 +282,7 @@ function getDevices(){
 									sliding = true;
 								})
 								.on('slideStop', function(ev){
+									$('#current'+ $(this).attr('id').substr(2)).text(ev.value);
 									slideDevice($(this).attr('id').substr(2),ev.value);
 								});
 							}
@@ -295,6 +298,7 @@ function getDevices(){
 									sliding = true;
 								})
 								.on('slideStop', function(ev){
+									$('#current'+ $(this).attr('id').substr(2)).text(ev.value/0.16);
 									slideDevice($(this).attr('id').substr(2),ev.value);
 								});
 							}

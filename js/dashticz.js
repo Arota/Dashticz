@@ -302,12 +302,11 @@ function getDevices(){
 									slideDevice($(this).attr('id').substr(2),ev.value);
 								});
 							}
+							setslide='';
 						}
-			
 					}
 				}
 			}
-			
 			if(typeof(temperatureBlock['Wunderground'])!=='undefined'){
 				var wg = temperatureBlock['Wunderground'];
 				var html='<div class="col-xs-6 col-sm-4 col-md-3 col-lg-3" id="wunderground">';
